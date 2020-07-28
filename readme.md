@@ -9,6 +9,7 @@ and [Baselines](https://github.com/hill-a/stable-baselines). I will try to compl
 ## Algorithms
 - [ ] PPO
 - [ ] SAC
+- [ ] TD3
 - [ ] More...
 
 ## Getting Started
