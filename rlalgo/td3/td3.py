@@ -228,7 +228,7 @@ class td3(object):
             i = 0
             while True:
                 # Take deterministic actions at test time
-                a = self.ac.act(np2tentor(o), deterministic=True)
+                a = self.ac.act(np2tentor(o), deterministic=True)*self.act_scale
                 o, r, d, infos = self.test_env.step(tensor2np(a))
                 for info in infos:
                     maybeepinfo = info.get('episode')
