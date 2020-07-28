@@ -12,8 +12,6 @@ except ImportError:
 from common import logger
 from common.buildenv import build_env
 from common.util import convert_json
-
-
 def check_valid_env(env_id):
     registered_envs = set(gym.envs.registry.env_specs.keys())
     if env_id not in registered_envs:

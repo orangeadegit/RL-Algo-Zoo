@@ -33,7 +33,8 @@ class SacActor(nn.Module):
         self.mean = nn.Linear(indim, self.ncat)
         self.logstd = nn.Linear(indim, self.ncat,)
         self.reset_parameter()
-        self.action_scale = ac_space.high[0]
+        self.action_scale = ac_space.high[1]
+        self.action_low=ac_space.high
 
     def reset_parameter(self):
         weights_init(self.mean, gain=0.01)
@@ -61,7 +62,6 @@ class SacActor(nn.Module):
             logp -= (2 * (np.log(2) - action - F.softplus(-2 * action))).sum(axis=1)
         else:
             logp = None
-
         action = torch.tanh(action)
         action = action *  self.action_scale
 

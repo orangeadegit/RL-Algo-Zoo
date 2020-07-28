@@ -27,12 +27,17 @@
 #    /opt/conda/bin/conda clean -tipsy && \
 #    echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/bash.bashrc && \
 #    echo "conda activate base" >> /etc/bash.bashrc
-
 FROM teslazhu/rl_pre
 WORKDIR /root/code
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
     pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U  && \
     pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free &&  \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch && \
+    conda config --set show_channel_urls yes && \
     pip config set global.timeout 6000
 
 RUN mkdir -p /root/.mujoco \
