@@ -7,7 +7,6 @@ import torch.nn.functional as F
 from rlalgo.models import Mlp, weights_init
 from torch.distributions import Normal
 from rlalgo.models import tensor2np
-from rlalgo.td3.noise import NormalActionNoise
 def combined_shape(length, shape=None):
     if shape is None:
         return (length,)
